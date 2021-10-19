@@ -13,6 +13,7 @@
 		E97BF3F2271DC8CF00A734CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E97BF3F0271DC8CF00A734CB /* Main.storyboard */; };
 		E97BF3F4271DC8D000A734CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E97BF3F3271DC8D000A734CB /* Assets.xcassets */; };
 		E97BF3F7271DC8D000A734CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E97BF3F5271DC8D000A734CB /* LaunchScreen.storyboard */; };
+		E97BF3FF271DD70900A734CB /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = E97BF3FE271DD70900A734CB /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E97BF3F3271DC8D000A734CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E97BF3F6271DC8D000A734CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E97BF3F8271DC8D000A734CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E97BF3FE271DD70900A734CB /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				E97BF3EC271DC8CF00A734CB /* SceneDelegate.swift */,
 				E97BF3EE271DC8CF00A734CB /* ViewController.swift */,
 				E97BF3F0271DC8CF00A734CB /* Main.storyboard */,
+				E97BF3FE271DD70900A734CB /* start.txt */,
 				E97BF3F3271DC8D000A734CB /* Assets.xcassets */,
 				E97BF3F5271DC8D000A734CB /* LaunchScreen.storyboard */,
 				E97BF3F8271DC8D000A734CB /* Info.plist */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E97BF3F7271DC8D000A734CB /* LaunchScreen.storyboard in Resources */,
+				E97BF3FF271DD70900A734CB /* start.txt in Resources */,
 				E97BF3F4271DC8D000A734CB /* Assets.xcassets in Resources */,
 				E97BF3F2271DC8CF00A734CB /* Main.storyboard in Resources */,
 			);
