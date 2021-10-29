@@ -10,12 +10,14 @@ import UIKit
 class ViewController: UITableViewController {
     var allWords = [String]()
     var usedWords = [String]()
-
+    
+    let wordsUDKey = "words"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restartGame))
         
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordsURL) {
@@ -60,6 +62,8 @@ class ViewController: UITableViewController {
                     let indexPath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
                     
+                    saveDataToUserDefaults()
+                    
                     return
                 } else {
                     showErrorMessage("Word not recognised", "You can't just make them up, you know!")
@@ -71,8 +75,6 @@ class ViewController: UITableViewController {
             guard let title = title?.lowercased() else { return }
             showErrorMessage("Word not possible", "You can't spell that word from \"\(title)\"")
         }
-        
-        
     }
     
     func isPossible(word: String) -> Bool {
@@ -103,10 +105,25 @@ class ViewController: UITableViewController {
         return title != word && !usedWords.contains(word)
     }
 
-    @objc func startGame() {
+    func startGame() {
+        if var savedWords = UserDefaults.standard.stringArray(forKey: wordsUDKey) {
+            title = savedWords.removeFirst()
+            usedWords = savedWords
+        } else {
+            restartGame()
+        }
+    }
+    
+    @objc func restartGame() {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
+        saveDataToUserDefaults()
+    }
+    
+    func saveDataToUserDefaults() {
+        let savedWords = [title ?? ""] + usedWords
+        UserDefaults.standard.set(savedWords, forKey: wordsUDKey)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,7 +134,5 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Word", for: indexPath)
         cell.textLabel?.text = usedWords[indexPath.row]
         return cell
-        
     }
 }
-
